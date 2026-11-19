@@ -2,386 +2,279 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Musik und Produktionen von Mando Project und Mando Studio.">
-  <title>Meine Songs | Mando Project</title>
-  <link rel="icon" type="image/png" href="mando-wal-favicon.png">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #0c0c0c;
-      color: #f4ead5;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .header {
-      padding: 22px 5%;
-      background: #111;
-      border-bottom: 1px solid #6c542d;
-    }
-
-    .header-inner {
-      max-width: 1250px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .logo {
-      color: #e5bf79;
-      font-family: Georgia, serif;
-      font-size: clamp(24px, 5vw, 36px);
-      font-style: italic;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .home-link {
-      color: #e5bf79;
-      text-decoration: none;
-      border: 1px solid #9a7945;
-      padding: 10px 15px;
-      border-radius: 8px;
-    }
-
-    .intro,
-    .music-section {
-      max-width: 1250px;
-      margin: auto;
-      padding: 48px 5%;
-    }
-
-    .intro {
-      text-align: center;
-      padding-top: 65px;
-      padding-bottom: 35px;
-    }
-
-    .eyebrow {
-      color: #cba365;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    h1,
-    h2 {
-      font-family: Georgia, serif;
-      color: #e5bf79;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: clamp(40px, 8vw, 68px);
-      margin: 18px 0;
-    }
-
-    h2 {
-      font-size: clamp(30px, 6vw, 48px);
-      margin: 14px 0 20px;
-    }
-
-    .description {
-      max-width: 800px;
-      color: #e5ded0;
-      font-size: 18px;
-    }
-
-    .intro .description {
-      margin: 0 auto 25px;
-    }
-
-    .section-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 28px;
-    }
-
-    .section-links a,
-    .button {
-      display: inline-block;
-      border: 1px solid #aa8349;
-      border-radius: 9px;
-      padding: 11px 15px;
-      color: #e5bf79;
-      background: #191919;
-      text-decoration: none;
-      font-size: 15px;
-    }
-
-    .section-links a:hover,
-    .button:hover {
-      background: #6d512b;
-      color: #fff;
-    }
-
-    .divider {
-      border: 0;
-      border-top: 1px solid #403321;
-      margin: 10px 0;
-    }
-
-    .cover-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 35px;
-    }
-
-    .cover-card {
-      background: #181818;
-      border: 1px solid #65502e;
-      border-radius: 17px;
-      overflow: hidden;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cover-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background: #222;
-    }
-
-    .cover-info {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .cover-info h3 {
-      font-size: clamp(17px, 3.5vw, 23px);
-      line-height: 1.35;
-      margin: 0 0 12px;
-      color: #f7ecd8;
-      overflow-wrap: anywhere;
-    }
-
-    .cover-info p {
-      color: #c8a66d;
-      margin: 0 0 16px;
-    }
-
-    .cover-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: auto;
-    }
-
-    .cover-actions .button {
-      font-size: 14px;
-      padding: 9px 12px;
-    }
-
-    .notice {
-      color: #d5b77e;
-      font-size: 15px;
-      margin-top: auto;
-    }
-
-    .collection-area {
-      background: #13110e;
-      border-top: 1px solid #584529;
-      border-bottom: 1px solid #584529;
-    }
-
-    .collection-card img {
-      object-fit: contain;
-      padding: 8px;
-      background: #191919;
-    }
-
-    .collection-card .cover-info {
-      text-align: center;
-    }
-
-    .collection-card .cover-actions {
-      justify-content: center;
-    }
-
-    footer {
-      padding: 35px 5%;
-      text-align: center;
-      border-top: 1px solid #584529;
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #e5bf79;
-    }
-
-    @media (min-width: 800px) {
-      .cover-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 24px;
-      }
-    }
-
-    @media (min-width: 1150px) {
-      .cover-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Musik und Produktionen von Mando Project und Mando Studio.">
+<title>Meine Songs | Mando Project</title>
+<link rel="icon" type="image/png" href="mando-wal-favicon.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#0c0c0c;color:#f4ead5;font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:inherit}
+.header{padding:22px 5%;background:#111;border-bottom:1px solid #6c542d}
+.header-inner{max-width:1250px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.logo{color:#e5bf79;font-family:Georgia,serif;font-size:clamp(24px,5vw,36px);font-style:italic;font-weight:bold;text-decoration:none}
+.home-link{color:#e5bf79;text-decoration:none;border:1px solid #9a7945;padding:10px 15px;border-radius:8px}
+.intro,.music-section{max-width:1250px;margin:auto;padding:48px 5%}
+.intro{text-align:center;padding-top:65px;padding-bottom:35px}
+.eyebrow{color:#cba365;text-transform:uppercase;letter-spacing:3px;font-size:13px;font-weight:bold}
+h1,h2{font-family:Georgia,serif;color:#e5bf79;line-height:1.2}
+h1{font-size:clamp(40px,8vw,68px);margin:18px 0}
+h2{font-size:clamp(30px,6vw,48px);margin:14px 0 20px}
+.description{max-width:800px;color:#e5ded0;font-size:18px}
+.intro .description{margin:0 auto 25px}
+.section-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
+.section-links a,.button{display:inline-block;border:1px solid #aa8349;border-radius:9px;padding:11px 15px;color:#e5bf79;background:#191919;text-decoration:none;font-size:15px}
+.section-links a:hover,.button:hover{background:#6d512b;color:white}
+.divider{border:0;border-top:1px solid #403321;margin:10px 0}
+.cover-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:35px}
+.cover-card{background:#181818;border:1px solid #65502e;border-radius:17px;overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.cover-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#222}
+.cover-info{padding:16px;display:flex;flex-direction:column;flex:1}
+.cover-info h3{font-size:clamp(17px,3.5vw,23px);line-height:1.35;margin:0 0 12px;color:#f7ecd8;overflow-wrap:anywhere}
+.cover-info p{color:#c8a66d;margin:0 0 16px}
+.cover-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}
+.cover-actions .button{font-size:14px;padding:9px 12px}
+.notice{color:#d5b77e;font-size:15px;margin-top:auto}
+.collection-area{background:#13110e;border-top:1px solid #584529;border-bottom:1px solid #584529}
+.collection-card img{object-fit:contain;padding:8px;background:#191919}
+.collection-card .cover-info{text-align:center}
+.collection-card .cover-actions{justify-content:center}
+footer{padding:35px 5%;text-align:center;border-top:1px solid #584529;color:#aaa;font-size:14px}
+footer a{color:#e5bf79}
+@media(min-width:800px){.cover-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
+@media(min-width:1150px){.cover-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
 </head>
-
 <body>
-
-<header class="header">
-  <div class="header-inner">
-    <a class="logo" href="index.html">MANDO PROJECT</a>
-    <a class="home-link" href="index.html">← Startseite</a>
-  </div>
-</header>
-
+<header class="header"><div class="header-inner"><a class="logo" href="index.html">MANDO PROJECT</a><a class="home-link" href="index.html">← Startseite</a></div></header>
 <main>
-
-  <section class="intro">
-    <p class="eyebrow">Musik mit Herz und Leidenschaft</p>
-    <h1>Meine Songs</h1>
-
-    <p class="description">
-      Willkommen in meiner musikalischen Welt.
-      Entdecke die Veröffentlichungen von Mando Project,
-      Musik aus meinem Mando Studio und Produktionen
-      für andere Künstler.
-    </p>
-
-    <nav class="section-links">
-      <a href="#mando-project">Mando Project</a>
-      <a href="#mando-studio">Mando Studio</a>
-      <a href="#produktionen">Produktionen</a>
-      <a href="#demnaechst">Demnächst</a>
-      <a href="#collections">Meine Collections</a>
-    </nav>
-  </section>
-
-  <hr class="divider">
-
-  <section class="music-section" id="mando-project">
-    <p class="eyebrow">Emotionen · Hoffnung · Geschichten</p>
-    <h2>Mando Project</h2>
-
-    <p class="description">
-      Songs, die Geschichten erzählen, Menschen berühren
-      und zum Nachdenken anregen.
-    </p>
-
-    <div class="cover-grid">
-
-      <article class="cover-card">
-        <img src="Wal Hope song.jpg" alt="Wal Hope Song" loading="lazy">
-        <div class="cover-info">
-          <h3>Wal H-O-P-E Song</h3>
-          <p>03.04.2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/intl-de/album/5B0IwRCmnelLsubYAaWG3R" target="_blank" rel="noopener noreferrer">▶ Spotify</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="erst wenn ihr strandet.jpg" alt="Erst wenn ihr strandet" loading="lazy">
-        <div class="cover-info">
-          <h3>Erst wenn ihr strandet</h3>
-          <p>24.04.2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Erst%20wenn%20ihr%20strandet" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="zurück zu hause kleiner Hope.jpeg" alt="Zurück zu Haus Kleiner Hope" loading="lazy">
-        <div class="cover-info">
-          <h3>Zurück zu Haus (Kleiner Hope)</h3>
-          <p>2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Zurueck%20zu%20Haus%20Kleiner%20Hope" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="wacht endlich auf.jpg" alt="Wacht endlich auf" loading="lazy">
-        <div class="cover-info">
-          <h3>Wacht endlich auf!</h3>
-          <p>2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Wacht%20endlich%20auf" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="vater.png" alt="Vater hörst du ihren Schrei" loading="lazy">
-        <div class="cover-info">
-          <h3>Vater, hörst du ihren Schrei?</h3>
-          <p>2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Vater%20hoerst%20du%20ihren%20Schrei" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="Kinder der Stadt.png" alt="Kinder der Stadt Originalversion" loading="lazy">
-        <div class="cover-info">
-          <h3>Kinder der Stadt</h3>
-          <p>Originalversion · 06.11.2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Kinder%20der%20Stadt" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
-            <a class="button" href="https://music.amazon.ca/albums/B0HQ57DHJ8" target="_blank" rel="noopener noreferrer">Amazon Music</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="kinder der stadt die stimmen der kinder.png" alt="Kinder der Stadt Stimmen der Kinder" loading="lazy">
-        <div class="cover-info">
-          <h3>Kinder der Stadt – Stimmen der Kinder</h3>
-          <p>06.11.2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Kinder%20der%20Stadt%20Stimmen%20der%20Kinder" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
-            <a class="button" href="https://music.amazon.it/albums/B0HQDD9KSR" target="_blank" rel="noopener noreferrer">Amazon Music</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="cover-card">
-        <img src="er lebt in dir.png" alt="Er lebt in dir" loading="lazy">
-        <div class="cover-info">
-          <h3>Er lebt in dir</h3>
-          <p>2026</p>
-          <div class="cover-actions">
-            <a class="button" href="https://open.spotify.com/search/Mando%20Project%20Er%20lebt%20in%20dir" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+<section class="intro">
+<p class="eyebrow">Musik mit Herz und Leidenschaft</p>
+<h1>Meine Songs</h1>
+<p class="description">Willkommen in meiner musikalischen Welt. Entdecke die Veröffentlichungen von Mando Project, Musik aus meinem Mando Studio und Produktionen für andere Künstler.</p>
+<nav class="section-links"><a href="#mando-project">Mando Project</a><a href="#mando-studio">Mando Studio</a><a href="#produktionen">Produktionen</a><a href="#demnaechst">Demnächst</a><a href="#collections">Meine Collections</a></nav>
+</section>
+<hr class="divider">
+<section class="music-section" id="mando-project">
+<p class="eyebrow">Emotionen · Hoffnung · Geschichten</p>
+<h2>Mando Project</h2>
+<p class="description">Songs, die Geschichten erzählen, Menschen berühren und zum Nachdenken anregen.</p>
+<div class="cover-grid">
+<article class="cover-card">
+<img src="Wal%20Hope%20song.jpg" alt="Wal H-O-P-E Song" loading="lazy">
+<div class="cover-info">
+<h3>Wal H-O-P-E Song</h3>
+<p>03.04.2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/intl-de/album/5B0IwRCmnelLsubYAaWG3R" target="_blank" rel="noopener noreferrer">▶ Spotify</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="erst%20wenn%20ihr%20strandet.jpg" alt="Erst wenn ihr strandet" loading="lazy">
+<div class="cover-info">
+<h3>Erst wenn ihr strandet</h3>
+<p>24.04.2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Erst%20wenn%20ihr%20strandet" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="zur%C3%BCck%20zu%20hause%20kleiner%20hope.jpeg" alt="Zurück zu Haus (Kleiner Hope)" loading="lazy">
+<div class="cover-info">
+<h3>Zurück zu Haus (Kleiner Hope)</h3>
+<p>2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Zur%C3%BCck%20zu%20Haus%20Kleiner%20Hope" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="wacht%20endlich%20auf.jpg" alt="Wacht endlich auf!" loading="lazy">
+<div class="cover-info">
+<h3>Wacht endlich auf!</h3>
+<p>2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Wacht%20endlich%20auf" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="vater.png" alt="Vater, hörst du ihren Schrei?" loading="lazy">
+<div class="cover-info">
+<h3>Vater, hörst du ihren Schrei?</h3>
+<p>2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Vater%20h%C3%B6rst%20du%20ihren%20Schrei" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="kinder%20der%20stadt.png" alt="Kinder der Stadt" loading="lazy">
+<div class="cover-info">
+<h3>Kinder der Stadt</h3>
+<p>Originalversion · 06.11.2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Kinder%20der%20Stadt" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+<a class="button" href="https://music.amazon.ca/albums/B0HQ57DHJ8" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="kinder%20der%20stadt%20die%20stimmen%20der%20kinder.png" alt="Kinder der Stadt – Stimmen der Kinder" loading="lazy">
+<div class="cover-info">
+<h3>Kinder der Stadt – Stimmen der Kinder</h3>
+<p>06.11.2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Kinder%20der%20Stadt%20Stimmen%20der%20Kinder" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+<a class="button" href="https://music.amazon.it/albums/B0HQDD9KSR" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="er%20lebt%20in%20dir.png" alt="Er lebt in dir" loading="lazy">
+<div class="cover-info">
+<h3>Er lebt in dir</h3>
+<p>2026</p>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Project%20Er%20lebt%20in%20dir" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<hr class="divider">
+<section class="music-section" id="mando-studio">
+<p class="eyebrow">Pop · Disco · Party · Studio</p>
+<h2>Mando Studio</h2>
+<p class="description">Veröffentlichte Songs direkt aus meinem Studio.</p>
+<div class="cover-grid">
+<article class="cover-card">
+<img src="take-me-to-the-summer.png" alt="Take Me to the Summer" loading="lazy">
+<div class="cover-info">
+<h3>Take Me to the Summer</h3>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Studio%20Take%20Me%20to%20the%20Summer" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="das-war-eine-geile-zeit.png" alt="Das war eine geile Zeit" loading="lazy">
+<div class="cover-info">
+<h3>Das war eine geile Zeit</h3>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Mando%20Studio%20Das%20war%20eine%20geile%20Zeit" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<hr class="divider">
+<section class="music-section" id="produktionen">
+<p class="eyebrow">Musik für andere Künstler</p>
+<h2>Weitere Produktionen</h2>
+<p class="description">Eine Auswahl meiner Studioarbeit für andere Musikprojekte.</p>
+<div class="cover-grid">
+<article class="cover-card">
+<img src="schattenflug%20die%20ela.png" alt="Schattenflug – Die Ela" loading="lazy">
+<div class="cover-info">
+<h3>Schattenflug – Die Ela</h3>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Schattenflug%20Die%20Ela" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+<article class="cover-card">
+<img src="schattenflug%20ein%20ganz%20besonderer%20tag.png" alt="Schattenflug – Ein ganz besonderer Tag" loading="lazy">
+<div class="cover-info">
+<h3>Schattenflug – Ein ganz besonderer Tag</h3>
+<div class="cover-actions">
+<a class="button" href="https://open.spotify.com/search/Schattenflug%20Ein%20ganz%20besonderer%20Tag" target="_blank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<hr class="divider">
+<section class="music-section" id="demnaechst">
+<p class="eyebrow">Neue Musik entsteht</p>
+<h2>Demnächst</h2>
+<p class="description">Hier bekommst du einen ersten Einblick in neue Songs und Projekte. Hörlinks folgen nach der offiziellen Veröffentlichung.</p>
+<div class="cover-grid">
+<article class="cover-card">
+<img src="ich%20geh%20meinen%20weg.png" alt="Ich geh meinen Weg" loading="lazy">
+<div class="cover-info">
+<h3>Ich geh meinen Weg</h3>
+<p class="notice">Veröffentlichung geplant</p>
+</div>
+</article>
+<article class="cover-card">
+<img src="bitte%20geh%20nicht.png" alt="Bitte geh nicht" loading="lazy">
+<div class="cover-info">
+<h3>Bitte geh nicht</h3>
+<p class="notice">In Vorbereitung</p>
+</div>
+</article>
+<article class="cover-card">
+<img src="so%20sehe%20ich%20die%2080er.png" alt="So sehe ich die 80er" loading="lazy">
+<div class="cover-info">
+<h3>So sehe ich die 80er</h3>
+<p class="notice">In Vorbereitung</p>
+</div>
+</article>
+<article class="cover-card">
+<img src="was%20ist%20die%20Ki.png" alt="Was ist die KI?" loading="lazy">
+<div class="cover-info">
+<h3>Was ist die KI?</h3>
+<p class="notice">In Vorbereitung</p>
+</div>
+</article>
+<article class="cover-card">
+<img src="hey%20ich%20w%C3%BCnsch%20dir%20frohe%20weihnacht.png" alt="Hey, ich wünsch dir frohe Weihnacht" loading="lazy">
+<div class="cover-info">
+<h3>Hey, ich wünsch dir frohe Weihnacht</h3>
+<p class="notice">Weihnachtsprojekt</p>
+</div>
+</article>
+</div>
+</section>
+<div class="collection-area">
+<section class="music-section" id="collections">
+<p class="eyebrow">Direkt aus meinem Studio</p>
+<h2>Meine Collections</h2>
+<p class="description">Meine eigenen Studio-Sammlungen mit Songs aus verschiedenen Musikrichtungen. Hier findest du meine Studio Collection Volume 1 und Volume 2.</p>
+<div class="cover-grid">
+<article class="cover-card collection-card">
+<img src="studio1.png" alt="Studio Collection – Volume 1" loading="lazy">
+<div class="cover-info">
+<h3>Studio Collection – Volume 1</h3>
+<p>Meine Studio-Sammlung</p>
+<div class="cover-actions">
+<a class="button" href="studio1.png" target="_blank" rel="noopener noreferrer">Collection ansehen</a>
+</div>
+</div>
+</article>
+<article class="cover-card collection-card">
+<img src="studio%20collektion%202.png" alt="Studio Collection – Volume 2" loading="lazy">
+<div class="cover-info">
+<h3>Studio Collection – Volume 2</h3>
+<p>Meine Studio-Sammlung</p>
+<div class="cover-actions">
+<a class="button" href="studio%20collektion%202.png" target="_blank" rel="noopener noreferrer">Collection ansehen</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+</div>
+</main>
+<footer>&copy; 2026 Mando Project · <a href="index.html">Startseite</a> · <a href="impressum.html">Impressum &amp; Datenschutz</a></footer>
+</body>
+</html>
+ank" rel="noopener noreferrer">▶ Auf Spotify suchen</a>
           </div>
         </div>
       </article>
